@@ -1,0 +1,14 @@
+# OSX generated files #
+######################
+.DS_Store
+.DS_Store?
+.Trashes
+
+# dir #
+######################
+/node_modules/*
+/dist/
+
+# npm debug file #
+######################
+npm-debug.log
