@@ -1,0 +1,56 @@
+$default_fontsize: 75px;
+$default_animate_time: 0.5s;
+@function pxToRem($n:0) {
+    @if unit($n)=='px' {
+        @return $n/ $default_fontsize * 1rem;
+    }
+    @else {
+        @return ($n * 1px) / $default_fontsize * 1rem;
+    }
+}
+
+@mixin mySprite($sprite) {
+    background-repeat: no-repeat;
+    overflow: hidden;
+    width: pxToRem(nth($sprite, 3));
+    height: pxToRem(nth($sprite, 4));
+    @include mySpritePosition($sprite);
+}
+
+@mixin mySpritePosition($sprite) {
+    background-position: pxToRem(nth($sprite, 1)) pxToRem(nth($sprite, 2));
+}
+
+@mixin mySprite-marginLeft($sprite) {
+    margin-left: pxToRem(nth($sprite, 3)/-2);
+}
+
+@mixin mySprite-marginTop($sprite) {
+    margin-top: pxToRem(nth($sprite, 4)/-2);
+}
+
+html,
+body{
+    padding: 0;
+    margin: 0;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    visibility: hidden;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+div {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
