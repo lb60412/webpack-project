@@ -24,11 +24,10 @@
 ```
 
 # project initial
-- nodejs version > 5.x
+- nodejs version 6.5
 - install
 
 ```
-$ sudo npm install gulp -g
 $ sudo npm install
 ```
 
