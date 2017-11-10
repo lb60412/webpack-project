@@ -20,29 +20,29 @@ export var commonConfig = {
     entry: {},
     output: {
         path: path.resolve(__dirname, './../dist'),
-        filename: '[name]-[hash:5].js',
+        filename: 'js/[name]-[hash:5].js',
         publicPath: './'
     },
     module: {
         rules: [{
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            minimize: true //css压缩
-                        }
-                    }, {
-                        loader: 'autoprefixer-loader',
-                        query: {
-                            browsers: ['iOS 7', 'Android 2.3', 'Firefox > 15']
-                        }
-                    }, {
-                        loader: 'sass-loader'
-                    }]
-                })
-            },
+            test: /\.scss$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: [{
+                    loader: 'css-loader',
+                    options: {
+                        minimize: true //css压缩
+                    }
+                }, {
+                    loader: 'autoprefixer-loader',
+                    query: {
+                        browsers: ['iOS 7', 'Android 2.3', 'Firefox > 15']
+                    }
+                }, {
+                    loader: 'sass-loader'
+                }]
+            })
+        },
             {
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader'
@@ -50,19 +50,20 @@ export var commonConfig = {
                 test: /\.(png|jpg|gif|svg)/,
                 loader: 'file-loader',
                 query: {
-                    publicPath: './',
+                    publicPath: './../',
                     outputPath: 'images/',
                     name: '[name]-[hash:5].[ext]'
                 }
             }
         ]
     },
-    plugins: [new ExtractTextPlugin('[name]-[chunkhash:5].css')]
+    plugins: [new ExtractTextPlugin('css/[name]-[chunkhash:5].css')]
 }
 
-export var templateConfig = {
+export var templateConfig = [{
+    entry: 'index',
     filename: 'index.html',
-    title: 'example',
+    title: 'index',
     template: './config/template.html',
     chunks: ['index'],
     inject: true,
@@ -78,4 +79,23 @@ export var templateConfig = {
         minifyJS: true,
         minifyCSS: true
     }
-};
+}, {
+    entry: 'two',
+    filename: 'two.html',
+    title: 'two',
+    template: './config/template.html',
+    chunks: ['two'],
+    inject: true,
+    hash: false,
+    minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeEmptyAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        html5: true,
+        minifyJS: true,
+        minifyCSS: true
+    }
+}];

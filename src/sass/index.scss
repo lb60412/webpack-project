@@ -1,9 +1,9 @@
 @import './base';
 
-.icon {
-    width: pxToRem(320);
-    height: pxToRem(320);
-    background: url(../images/icon.png) no-repeat center center;
+.app {
+    width: pxToRem(300);
+    height: pxToRem(300);
+    background: url(../images/icon.png) no-repeat center center #ccc;
     background-size: pxToRem(320) pxToRem(320);
 }
 
